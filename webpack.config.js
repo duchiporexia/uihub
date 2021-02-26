@@ -25,6 +25,14 @@ module.exports = {
         },
       },
       {
+        test: /\.ttf$/,
+        loader: 'file-loader', // or directly file-loader
+        include: path.resolve(
+          __dirname,
+          'node_modules/react-native-vector-icons',
+        ),
+      },
+      {
         test: /\.(js|jsx|ts|tsx)$/,
         use: [
           {
@@ -39,7 +47,7 @@ module.exports = {
             },
           },
         ],
-        exclude: /node_modules/,
+        exclude: /node_modules[/\\](?!react-native-vector-icons)/,
       },
     ],
   },

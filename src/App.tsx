@@ -19,16 +19,13 @@ import {
   Button,
 } from 'react-native';
 import {rst} from 'rt-state';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 class SvgExample extends React.Component {
   render() {
     return (
-      <View
-        style={[
-          StyleSheet.absoluteFill,
-          {alignItems: 'center', justifyContent: 'center'},
-        ]}>
-        <Svg height="50%" width="50%" viewBox="0 0 100 100">
+      <View>
+        <Svg height="50" width="50" viewBox="0 0 100 100">
           <Circle
             cx="50"
             cy="50"
@@ -66,11 +63,12 @@ const App = () => {
             <View style={styles.sectionContainer}>
               <Button title={'add'} onPress={() => state.x++} />
               <SvgExample />
+              <FontAwesome5 name={'rocket'} />
               <Text style={styles.sectionTitle}>
                 Step One {rst.view(() => state.x)}
               </Text>
               <Text style={styles.sectionDescription}>
-                XEdit <Text style={styles.highlight}>App.tsx</Text> to change
+                Edit <Text style={styles.highlight}>App.tsx</Text> to change
                 this screen and then come back to see your edits. xvv.
               </Text>
             </View>
