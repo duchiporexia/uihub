@@ -10,17 +10,28 @@
 import Svg, {Circle, Rect} from 'react-native-svg';
 import React from 'react';
 import {
+  DefaultTheme,
+  Button,
+  Provider as PaperProvider,
+} from 'react-native-paper';
+import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
   StatusBar,
-  Button,
 } from 'react-native';
 import {rst} from 'rt-state';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome';
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: 'tomato',
+    accent: 'yellow',
+  },
+};
 class SvgExample extends React.Component {
   render() {
     return (
@@ -53,7 +64,7 @@ const App = () => {
   const state = rst.state({x: 100});
 
   return (
-    <>
+    <PaperProvider theme={theme as any}>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
@@ -61,7 +72,7 @@ const App = () => {
           style={styles.scrollView}>
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Button title={'add'} onPress={() => state.x++} />
+              <Button onPress={() => state.x++}>addx</Button>
               <SvgExample />
               <FontAwesome5 name={'rocket'} />
               <Text style={styles.sectionTitle}>
@@ -81,7 +92,7 @@ const App = () => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
+    </PaperProvider>
   );
 };
 

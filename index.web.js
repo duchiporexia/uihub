@@ -1,15 +1,21 @@
 /**
  * @format
  */
-
+import 'setimmediate';
 import {AppRegistry} from 'react-native';
-import App from './src/App';
+// import App from './src/App';
+import App from './src/paper';
 import {name as appName} from './app.json';
 // Generate required css
-import iconFont from 'react-native-vector-icons/Fonts/FontAwesome.ttf';
+import FontAwesome from 'react-native-vector-icons/Fonts/FontAwesome.ttf';
+import MaterialCommunityIcons from 'react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf';
 const iconFontStyles = `@font-face {
-  src: url(${iconFont});
+  src: url(${FontAwesome});
   font-family: FontAwesome;
+}
+@font-face {
+  src: url(${MaterialCommunityIcons});
+  font-family: MaterialCommunityIcons;
 }`;
 
 // Create stylesheet
