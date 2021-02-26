@@ -16,19 +16,13 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
 } from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-declare const global: {HermesInternal: null | {}};
+import {rst} from 'rt-state';
 
 const App = () => {
+  const state = rst.state({x: 100});
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -36,30 +30,15 @@ const App = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-                screen and then come back to see your edits.
+              <Button title={'add'} onPress={() => state.x++} />
+              <Text style={styles.sectionTitle}>
+                Step One {rst.view(() => state.x)}
               </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
               <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
+                XEdit <Text style={styles.highlight}>App.tsx</Text> to change
+                this screen and then come back to see your edits. xvv.
               </Text>
             </View>
             <View style={styles.sectionContainer}>
@@ -68,12 +47,20 @@ const App = () => {
                 Read the docs to discover what to do next:
               </Text>
             </View>
-            <LearnMoreLinks />
           </View>
         </ScrollView>
       </SafeAreaView>
     </>
   );
+};
+
+const Colors = {
+  primary: '#1292B4',
+  white: '#FFF',
+  lighter: '#F3F3F3',
+  light: '#DAE1E7',
+  dark: '#444',
+  black: '#000',
 };
 
 const styles = StyleSheet.create({
